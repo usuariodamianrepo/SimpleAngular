@@ -1,0 +1,59 @@
+<mat-card style="width: 90%; margin: 50px auto">
+    <mat-card-header>
+        <mat-card-title><p>Ciudades</p></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <button mat-flat-button color="primary" (click)="newCity()">Nueva Ciudad</button>
+        <button mat-raised-button (click)="goToWether()">Clima</button>
+        <table mat-table [dataSource]="listCity" class="mat-elevation-z2" style="margin-top:20px">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id</th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            <!-- Position Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Nombre</th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef> Descripción </th>
+              <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="latitude">
+              <th mat-header-cell *matHeaderCellDef> Latitud </th>
+              <td mat-cell *matCellDef="let element"> {{element.latitude}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="longitude">
+              <th mat-header-cell *matHeaderCellDef> Longitud </th>
+              <td mat-cell *matCellDef="let element"> {{element.longitude}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="country">
+              <th mat-header-cell *matHeaderCellDef> País </th>
+              <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="accion">
+              <th mat-header-cell *matHeaderCellDef> </th>
+              <td mat-cell *matCellDef="let element">
+                  <button mat-icon-button color="primary" (click)="editCity(element)">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="warn" (click)="deleteCity(element)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+              </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+    </mat-card-content>
+  </mat-card>
